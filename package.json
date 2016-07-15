@@ -5,6 +5,9 @@
   "bin": {
     "password-strength-checker": "./index.js"
   },
+  "scripts": {
+    "lint": "standard"
+  },
   "keywords": [
     "password",
     "cli"
@@ -15,5 +18,8 @@
     "debug": "^2.2.0",
     "prompt": "^1.0.0",
     "zxcvbn": "^4.3.0"
+  },
+  "devDependencies": {
+    "standard": "^7.1.2"
   }
 }

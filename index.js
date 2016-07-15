@@ -21,13 +21,18 @@ prompt.get({
     }
   }
 }, (err, result) => {
+  if (err) {
+    console.error(err)
+    process.exit(1)
+  }
+
   const pwd = result.password
   const output = showResult(zxcvbn(pwd))
   debug(zxcvbn(pwd))
   console.log(output.join('\n'))
 })
 
-function drawStrength(val, maxVal) {
+function drawStrength (val, maxVal) {
   let currRatio = ((val / maxVal) > 0) ? (val / maxVal) : false
   let drawResult = []
   drawResult.push('[')
@@ -44,7 +49,7 @@ function drawStrength(val, maxVal) {
   return drawResult.join('')
 }
 
-function showResult(data) {
+function showResult (data) {
   let result = []
 
   result.push(`Your password strength: ${data.score}: ${drawStrength(data.score, MAX_PASSWORD_STRENGTH)}`)
